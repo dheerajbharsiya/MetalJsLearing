@@ -1,0 +1,16 @@
+{namespace Button}
+
+/**
+ * @param cssClass
+ * @param onClick
+ * @param title
+ */
+{template .render}
+		<button onClick="{$onClick}" type="button" class="{$cssClass}">
+			 {if $title != null }
+                {$title} //renders the value in 'value'
+                {else}
+                DefaultTitle
+            {/if} 
+		</button>
+{/template}

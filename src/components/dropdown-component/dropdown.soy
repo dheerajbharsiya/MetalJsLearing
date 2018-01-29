@@ -1,0 +1,17 @@
+{namespace Dropdown}
+
+/**
+ * @param cssClass
+ * @param items
+ */
+{template .render}
+    {if $items}
+        <select class="{$cssClass}" onChange="handleClick">
+            {foreach $item in $items}
+                <option data-index="{index($item)}" value="{$item}" >{$item}</option>
+            {/foreach}
+        </select>
+    {else}
+    "Something went wrong"
+    {/if}
+{/template}
