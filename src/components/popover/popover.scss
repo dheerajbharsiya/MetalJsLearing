@@ -1,0 +1,7 @@
+.popover {
+    top: 50px;
+    left: 15px;
+    &.visible {
+        display: block;
+    }
+}

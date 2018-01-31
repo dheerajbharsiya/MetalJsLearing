@@ -1,0 +1,31 @@
+{namespace ContactForm}
+
+/**
+ * This renders the main element.
+ * @param? formConfig
+ * @param? buttonAvailable
+ */
+{template .render}
+<div class="row">
+    <div class="col-xs-6">
+        {foreach $item in $formConfig}
+            <div class="row">
+            <label class="control-label col-xs-4" for="email">{$item.labelName}</label>
+            <div class="col-xs-8">
+            <input type="{$item.fieldType}" value="{$item.value}" name="{$item.fieldName}" onChange="handleChange"  placeholder="{$item.fieldName}" class="form-control"/>    
+            </div>
+            </div>   
+        {/foreach}
+        {if $buttonAvailable} 
+            <div class="row">
+                <div class="control-label col-xs-4">
+                    <button type="submit" class="btn btn-success" onClick="onFormSubmit">Submit</button>
+                </div>
+            </div>
+        {/if}
+    </div>
+    <div class="col-xs-6" >
+        <div id="formValues" class="form-values"></div>
+    </div>
+</div>
+{/template}

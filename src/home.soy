@@ -4,8 +4,13 @@
 	{@param? btnCssClass: ?}
 	{@param? btnClick: ?}
 	{@param? btnTitle: ?}
+	{@param? modalBtnClick: ?}
 	{@param? dropdownData: ?}
-	
+	{@param? isModalVisible: ?}
+	{@param? popoverBtnClick: ?}
+	{@param? popoverClasses: ?}
+	{@param? contactFormConfig: ?}
+
 	<header class="container-fluid text-center">
 		<h1>Metal Js Components</h1>
 	</header>
@@ -25,15 +30,56 @@
 				<div class="form-group">
 					<label for="sel1">Select:</label>
 					{call Dropdown.render}
-						{param cssClass: 'btn btn-secondary dropdown-toggle form-control' /}
+						{param cssClass: 'dropdown-toggle form-control' /}
 						{param onClick: $btnClick /}
 						{param items: $dropdownData /}
 					{/call}
 				</div>
-			</div>		
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group">
+					<label for="sel1">Modal:</label>
+					{call Button.render}
+						{param cssClass: $btnCssClass /}
+						{param onClick: $modalBtnClick /}
+						{param title: 'Open Modal' /}
+					{/call}
+				</div>
+				{call Modal.render}
+					{param shown: $isModalVisible /}
+					{param header: 'Modal Header' /}
+				{/call}
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group">
+					<label for="sel1">Popover:</label>
+					{call Button.render}
+						{param cssClass: $btnCssClass /}
+						{param onClick: $popoverBtnClick /}
+						{param title: 'Popover' /}
+					{/call}
+					{call Popover.render}
+						{param elementClasses: $popoverClasses /}
+					{/call}
+				</div>
+			</div>
+
+			<div class="col-xs-8">
+				<strong>Contact Form:</strong>
+				<div class="form-group">
+					{call ContactForm.render}
+						{param formConfig: $contactFormConfig /}						
+						{param buttonAvailable: true /}						
+					{/call}
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 	<footer class="container-fluid text-right">
 	<p>@Footer Text</p>
+	        //    <input type="text" value="{$stateVar}" class="form-control"/>
+			//    {$stateVar}  
 	</footer>
 {/template}

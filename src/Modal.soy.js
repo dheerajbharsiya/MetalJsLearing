@@ -43,6 +43,7 @@ function $render(opt_data, opt_ijData, opt_ijData_deprecated) {
         $templateAlias1({cssClass: 'modal-header', onClick: opt_data.close, title: opt_data.header}, null, opt_ijData);
         incrementalDom.elementOpenStart('section');
             incrementalDom.attr('class', 'modal-body');
+            incrementalDom.attr('id', 'modal-body');
         incrementalDom.elementOpenEnd();
           soyIdom.print(opt_data.body);
         incrementalDom.elementClose('section');

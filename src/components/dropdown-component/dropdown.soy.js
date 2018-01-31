@@ -34,15 +34,15 @@ function $render(opt_data, opt_ijData, opt_ijData_deprecated) {
         incrementalDom.attr('class', opt_data.cssClass);
         incrementalDom.attr('onChange', 'handleClick');
     incrementalDom.elementOpenEnd();
-      var item264List = opt_data.items;
-      var item264ListLen = item264List.length;
-      for (var item264Index = 0; item264Index < item264ListLen; item264Index++) {
-          var item264Data = item264List[item264Index];
+      var item522List = opt_data.items;
+      var item522ListLen = item522List.length;
+      for (var item522Index = 0; item522Index < item522ListLen; item522Index++) {
+          var item522Data = item522List[item522Index];
           incrementalDom.elementOpenStart('option');
-              incrementalDom.attr('data-index', item264Index);
-              incrementalDom.attr('value', item264Data);
+              incrementalDom.attr('data-index', item522Index);
+              incrementalDom.attr('value', item522Data);
           incrementalDom.elementOpenEnd();
-            soyIdom.print(item264Data);
+            soyIdom.print(item522Data);
           incrementalDom.elementClose('option');
         }
     incrementalDom.elementClose('select');

@@ -21,7 +21,13 @@ var soyIdom = goog.require('soy.idom');
 
 var $templateAlias1 = Soy.getTemplate('Button.incrementaldom', 'render');
 
+var $templateAlias5 = Soy.getTemplate('ContactForm.incrementaldom', 'render');
+
 var $templateAlias2 = Soy.getTemplate('Dropdown.incrementaldom', 'render');
+
+var $templateAlias3 = Soy.getTemplate('Modal.incrementaldom', 'render');
+
+var $templateAlias4 = Soy.getTemplate('Popover.incrementaldom', 'render');
 
 
 /**
@@ -29,7 +35,12 @@ var $templateAlias2 = Soy.getTemplate('Dropdown.incrementaldom', 'render');
  *  btnCssClass: (?),
  *  btnClick: (?),
  *  btnTitle: (?),
- *  dropdownData: (?)
+ *  modalBtnClick: (?),
+ *  dropdownData: (?),
+ *  isModalVisible: (?),
+ *  popoverBtnClick: (?),
+ *  popoverClasses: (?),
+ *  contactFormConfig: (?)
  * }} opt_data
  * @param {Object<string, *>=} opt_ijData
  * @param {Object<string, *>=} opt_ijData_deprecated
@@ -46,7 +57,17 @@ function $render(opt_data, opt_ijData, opt_ijData_deprecated) {
   /** @type {?} */
   var btnTitle = opt_data.btnTitle;
   /** @type {?} */
+  var modalBtnClick = opt_data.modalBtnClick;
+  /** @type {?} */
   var dropdownData = opt_data.dropdownData;
+  /** @type {?} */
+  var isModalVisible = opt_data.isModalVisible;
+  /** @type {?} */
+  var popoverBtnClick = opt_data.popoverBtnClick;
+  /** @type {?} */
+  var popoverClasses = opt_data.popoverClasses;
+  /** @type {?} */
+  var contactFormConfig = opt_data.contactFormConfig;
   incrementalDom.elementOpenStart('header');
       incrementalDom.attr('class', 'container-fluid text-center');
   incrementalDom.elementOpenEnd();
@@ -85,7 +106,49 @@ function $render(opt_data, opt_ijData, opt_ijData_deprecated) {
           incrementalDom.elementOpenEnd();
             incrementalDom.text('Select:');
           incrementalDom.elementClose('label');
-          $templateAlias2({cssClass: 'btn btn-secondary dropdown-toggle form-control', onClick: btnClick, items: dropdownData}, null, opt_ijData);
+          $templateAlias2({cssClass: 'dropdown-toggle form-control', onClick: btnClick, items: dropdownData}, null, opt_ijData);
+        incrementalDom.elementClose('div');
+      incrementalDom.elementClose('div');
+      incrementalDom.elementOpenStart('div');
+          incrementalDom.attr('class', 'col-xs-4');
+      incrementalDom.elementOpenEnd();
+        incrementalDom.elementOpenStart('div');
+            incrementalDom.attr('class', 'form-group');
+        incrementalDom.elementOpenEnd();
+          incrementalDom.elementOpenStart('label');
+              incrementalDom.attr('for', 'sel1');
+          incrementalDom.elementOpenEnd();
+            incrementalDom.text('Modal:');
+          incrementalDom.elementClose('label');
+          $templateAlias1({cssClass: btnCssClass, onClick: modalBtnClick, title: 'Open Modal'}, null, opt_ijData);
+        incrementalDom.elementClose('div');
+        $templateAlias3({shown: isModalVisible, header: 'Modal Header'}, null, opt_ijData);
+      incrementalDom.elementClose('div');
+      incrementalDom.elementOpenStart('div');
+          incrementalDom.attr('class', 'col-xs-4');
+      incrementalDom.elementOpenEnd();
+        incrementalDom.elementOpenStart('div');
+            incrementalDom.attr('class', 'form-group');
+        incrementalDom.elementOpenEnd();
+          incrementalDom.elementOpenStart('label');
+              incrementalDom.attr('for', 'sel1');
+          incrementalDom.elementOpenEnd();
+            incrementalDom.text('Popover:');
+          incrementalDom.elementClose('label');
+          $templateAlias1({cssClass: btnCssClass, onClick: popoverBtnClick, title: 'Popover'}, null, opt_ijData);
+          $templateAlias4({elementClasses: popoverClasses}, null, opt_ijData);
+        incrementalDom.elementClose('div');
+      incrementalDom.elementClose('div');
+      incrementalDom.elementOpenStart('div');
+          incrementalDom.attr('class', 'col-xs-8');
+      incrementalDom.elementOpenEnd();
+        incrementalDom.elementOpen('strong');
+          incrementalDom.text('Contact Form:');
+        incrementalDom.elementClose('strong');
+        incrementalDom.elementOpenStart('div');
+            incrementalDom.attr('class', 'form-group');
+        incrementalDom.elementOpenEnd();
+          $templateAlias5({formConfig: contactFormConfig, buttonAvailable: true}, null, opt_ijData);
         incrementalDom.elementClose('div');
       incrementalDom.elementClose('div');
     incrementalDom.elementClose('div');
@@ -104,7 +167,12 @@ exports.render = $render;
  *  btnCssClass: (?),
  *  btnClick: (?),
  *  btnTitle: (?),
- *  dropdownData: (?)
+ *  modalBtnClick: (?),
+ *  dropdownData: (?),
+ *  isModalVisible: (?),
+ *  popoverBtnClick: (?),
+ *  popoverClasses: (?),
+ *  contactFormConfig: (?)
  * }}
  */
 $render.Params;
@@ -112,8 +180,8 @@ if (goog.DEBUG) {
   $render.soyTemplateName = 'Home.render';
 }
 
-exports.render.params = ["btnCssClass","btnClick","btnTitle","dropdownData"];
-exports.render.types = {"btnCssClass":"?","btnClick":"?","btnTitle":"?","dropdownData":"?"};
+exports.render.params = ["btnCssClass","btnClick","btnTitle","modalBtnClick","dropdownData","isModalVisible","popoverBtnClick","popoverClasses","contactFormConfig"];
+exports.render.types = {"btnCssClass":"?","btnClick":"?","btnTitle":"?","modalBtnClick":"?","dropdownData":"?","isModalVisible":"?","popoverBtnClick":"?","popoverClasses":"?","contactFormConfig":"?"};
 templates = exports;
 return exports;
 
