@@ -2,12 +2,23 @@ import './contact-form.scss';
 import templates from './contact-form.soy.js';
 import Component from 'metal-component';
 import Soy from 'metal-soy';
+import ajax from 'metal-ajax';
+
 
 class ContactForm extends Component {
     onFormSubmit() {
         console.log(this.formConfig);
         document.getElementById("formValues").innerHTML = JSON.stringify(this.formConfig);
+        ajax.request('https://jsonplaceholder.typicode.com/posts', 'post', JSON.stringify({
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+          }))
+        .then(xhrResponse => {
+            console.log(xhrResponse.response);
+        });
     }
+
 
     handleChange(event) {
         const target = event.target;
@@ -25,14 +36,7 @@ class ContactForm extends Component {
 Soy.register(ContactForm, templates);
 ContactForm.STATE = {
     formConfig: {
-        value: [
-            {
-                fieldName: 'username',
-                labelName: 'Username',
-                fieldType: 'text',
-                value: 'db'
-            }
-        ]
+        value: []
     }
 
 };

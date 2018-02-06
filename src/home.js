@@ -6,6 +6,8 @@ import './components/popover/popover.js';
 import templates from './home.soy.js';
 import Component from 'metal-component';
 import Soy from 'metal-soy';
+import idom from 'incremental-dom';
+
 
 class Home extends Component {
 
@@ -23,6 +25,13 @@ class Home extends Component {
                 fieldType: 'text',
                 value: 'db',
                 hasButton: true
+            },
+            {
+                fieldName: 'password',
+                labelName: 'Password',
+                fieldType: 'password',
+                value: 'db',
+                hasButton: true
             }
         ];
     }
@@ -30,6 +39,10 @@ class Home extends Component {
     btnClick() {
         console.log('button submit functionality');
         this.stateVar = 'ddfsdffsdfdddfddfdfdf';
+        idom.elementOpen('div', null, ['class', 'text-bold'], null);
+        idom.text('Added using Incremental Dom');
+        idom.elementClose('div');
+        patch(document.body, renderHello);
     }
 
     modalBtnClick() {
